@@ -1,0 +1,93 @@
+*{
+    margin: 0;
+    padding:0;
+}
+
+body{
+    background-color: red;
+    overflow: hidden;     /* jump pr ab niche vala scroll bar ni aaega (fit in area) */
+}
+.gameContainer{
+    background-image: url(bg.png);
+    background-repeat: no-repeat;    /* horizontal ya vertical repeat na ho */
+    background-size: 100vw 100vh;    /* visible ho img islea poore screen pr*/
+    width: 100%;
+    height: 100vh;
+    /* isse poora img dikhega varna ni dikhega height width se */
+}
+
+.dino{
+    background-image: url(dino.png);
+    background-repeat: no-repeat;
+    background-size: cover;        /* dino img andar rhegi (img on img) */
+    width: 233px;
+    height: 114px;        /* manage height -- km krro varna overflow */
+    position: absolute;   /* relative m top pr hi rhega (original pos pr hi) */
+    bottom:0;            /* abs -- parent positioned element jo already hai usske respect ho jaega */
+    left: 52px;
+}
+
+.obstacle{
+    width: 140px;
+    height: 93px;
+    background-image: url(dragon.png);
+    background-size: cover;
+    position: absolute;
+    bottom: 0;
+    left: 44vw;
+}
+
+.animateDino{
+    animation: dino 0.6s linear;  /* same speed ho animation ki n 0.6 sec m kaam ho jae */
+}
+
+/* clss jo remove and add hogi in JS*/
+.obstacleAni{
+    animation: obstacleAni 5s linear infinite; /* infinite chlte rhe n total kaam 5 sec ka*/
+}
+
+.gameOver{
+    position: relative;
+    top:63px;
+    font-size: 53px;
+    text-align: center; 
+    font-family: 'Ubuntu', sans-serif;
+}
+
+/* score update ho -- uska container */
+/* div upar ki wjh se poora space na le le -- islea width vgera adjust */
+#scoreCont{
+    font-size: 25px;
+    color: #54212f;
+    font-weight: bold;
+    position: absolute;
+    right: 45px;
+    top: 31px;
+    border: 2px solid black;
+    padding: 10px;
+    font-family: 'Ubuntu', sans-serif;
+    border-radius: 10px;
+}
+
+/* animation k liye -- keyframes zruri */
+/* 50% mtlb click pr -- 422px pr aa jae */
+@keyframes dino{
+    0%{
+        bottom: 0;
+    }
+    50%{
+        bottom: 422px;
+    }
+    100%{
+        bottom: 0; 
+    }
+}
+
+@keyframes obstacleAni{
+    0%{
+        left: 100vw;
+    }
+    100%{
+        left: -10vw;
+    }
+}
